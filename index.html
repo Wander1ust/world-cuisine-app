@@ -1,0 +1,132 @@
+<html>
+  <head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="http://d3js.org/d3.geo.projection.v0.js"></script>
+  <script src="http://datamaps.github.io/scripts/datamaps.world.min.js?v=1"></script>
+  <link href="https://bootswatch.com/4/simplex/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+
+
+  <style>
+    #map {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      max-width:100%;
+      max-height:100%
+    }
+  </style>
+  
+</head>
+
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand"  href="#">A to Z World Cuisine </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Filter by country.." aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+      
+    </nav>
+ <main role="main" class="container">
+
+      <div class="searchContainer">
+        <br/>
+        <h2>Select a Country: </h2>
+        <p class="lead">Select or enter a country to retrieve a countries cuisine and culture information.</p>
+        <input type="text" id="searchUser" class="form-control" placeholder="Country Name...">
+      </div>
+    <br>
+    <div id="profile"></div>
+
+
+    </main><!-- /.container -->
+  <div id="map"></div>
+ <!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <!-- I recommend you host this file on your own, since this will change without warning -->
+  <script src="http://datamaps.github.io/scripts/datamaps.world.min.js?v=1"></script>
+  <h2>Datamaps Playground</h2>
+  <p><a href="http://datamaps.github.io/">DataMaps Project Homepage</a></p>
+  <div id="container1" style="position: relative; width: 80%; max-height: 450px;"></div>
+ 
+     
+     <script>
+      var cuisineMap = new Datamap({
+    element: document.getElementById('map'),
+    scope: 'world',
+    geographyConfig: {
+        popupOnHover: true,
+        highlightOnHover: false
+    },
+    fills: {
+        'USA': '#1f77b4',
+        'RUS': '#9467bd',
+        'PRK': '#ff7f0e',
+        'PRC': '#2ca02c',
+        'IND': '#e377c2',
+        'GBR': '#8c564b',
+        'FRA': '#d62728',
+        'PAK': '#7f7f7f',
+        defaultFill: '#dbedff'
+    },
+    data: {
+        'RUS': {fillKey: 'RUS'},
+        'PRK': {fillKey: 'PRK'},
+        'PRC': {fillKey: 'PRC'},
+        'IND': {fillKey: 'IND'},
+        'GBR': {fillKey: 'GBR'},
+        'FRA': {fillKey: 'FRA'},
+        'PAK': {fillKey: 'PAK'},
+        'USA': {fillKey: 'USA'}
+    }
+});
+
+     var cuisines = [{
+        name: 'Indian Cuisine',
+        radius: 25,
+        price: 2.53,
+        country: 'IND',
+        fillKey: 'IND',
+        veganFriendly: 'Yes',
+        nationalDish: 'Curry',
+        mainIngredients: '',
+
+
+
+        latitude: 24.07,
+        longitude: 78.43
+     }
+    ];
+//draw bubbles for bombs
+cuisineMap.bubbles(cuisines, {
+    popupTemplate: function (geo, data) {
+            return ['<div class="hoverinfo">' +  data.name,
+            '<br/>Meal, Inexpensive Restauraunt: £:' +  data.price + '',
+            '<br/>Country: ' +  data.country + '',
+            '<br/>Vegan Friendly: ' +  data.veganFriendly + '',
+            '<br/>National Dish: ' +  data.nationalDish + '',
+            '</div>'].join('');
+    }
+});
+</script>
+</body>
+</body>
+</html>
